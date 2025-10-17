@@ -1,4 +1,4 @@
-import type { PayloadAction, PrepareAction } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type Appointment from "../types/appointment";
 import type { CreateAppointmentPayload } from "../types/appointment";
