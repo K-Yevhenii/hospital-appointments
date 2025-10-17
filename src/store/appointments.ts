@@ -1,0 +1,33 @@
+import type { PayloadAction, PrepareAction } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
+import type Appointment from "../types/appointment";
+import type { CreateAppointmentPayload } from "../types/appointment";
+
+const INITIAL_VALUE: Appointment[] = [];
+
+const appointmentSlice = createSlice({
+  name: "appointments",
+  initialState: INITIAL_VALUE,
+  reducers: {
+    createAppointment: {
+      reducer(state, action: PayloadAction<Appointment>) {
+        state.push(action.payload);
+      },
+      prepare(data: CreateAppointmentPayload) {
+        return {
+          payload: {
+            ...data,
+            id: nanoid(),
+          },
+        };
+      },
+    },
+    deleteAppointment(state, action: PayloadAction<string>) {
+      return state.filter((appointment) => appointment.id !== action.payload);
+    },
+  },
+});
+
+export const { createAppointment, deleteAppointment } =
+  appointmentSlice.actions;
+export default appointmentSlice.reducer;
