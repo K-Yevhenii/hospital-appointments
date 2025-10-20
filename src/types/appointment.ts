@@ -1,6 +1,6 @@
 export default interface Appointment {
   id: string;
-  appointmentDate: Date;
+  appointmentDate: string;
   doctor: string;
 }
 
