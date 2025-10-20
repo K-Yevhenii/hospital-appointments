@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { deleteAppointment } from "../store/appointments";
 
@@ -11,7 +12,7 @@ export default function AppointmentsList() {
           Doctor:{""}
           {appointment.doctor}
           Date:{""}
-          {appointment.appointmentDate.toLocaleString()}
+          {dayjs(appointment.appointmentDate).format("DD/MM/YYYY")}
           <button onClick={() => dispatch(deleteAppointment(appointment.id))}>
             Remove
           </button>
