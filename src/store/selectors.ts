@@ -9,7 +9,10 @@ const filterAppointmentsByDate = (appointments: Appointment[], date: Date) =>
 const filterAppointmentsByDoctorNames = (
   names: string[],
   appointments: Appointment[]
-): Appointment[] => {};
+): Appointment[] =>
+  appointments.filter(({ doctor }) =>
+    names.some((name) => doctor.toLowerCase().includes(name.toLowerCase()))
+  );
 
 const getAppointmentsAmount = (appointments: Appointment[]): number =>
   appointments.length;
