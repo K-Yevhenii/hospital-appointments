@@ -5,6 +5,7 @@ import doctors from "../mocks/doctors";
 import SelectField from "./SelectField";
 import { useAppDispatch } from "../hooks/redux";
 import { createAppointment } from "../store/appointments";
+import Button from "@mui/material/Button";
 
 interface FormValues {
   appointmentDate: Dayjs;
@@ -24,7 +25,7 @@ export default function CreateAppointmentForm() {
   }: FormValues) => {
     const appointment = {
       ...values,
-      appointmentDate: appointmentDate.toDate(),
+      appointmentDate: appointmentDate.toISOString(),
     };
     dispatch(createAppointment(appointment));
   };
@@ -48,7 +49,9 @@ export default function CreateAppointmentForm() {
             options={doctorOptions}
             sx={{ mb: 2 }}
           />
-          <button type="submit">Submit</button>
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
         </form>
       )}
     />
