@@ -25,9 +25,16 @@ const appointmentSlice = createSlice({
     deleteAppointment(state, action: PayloadAction<string>) {
       return state.filter((appointment) => appointment.id !== action.payload);
     },
+    editAppointment(state, action: PayloadAction<Appointment>) {
+      return state.map((appointment) =>
+        appointment.id === action.payload.id
+          ? { ...appointment, ...action.payload }
+          : appointment
+      );
+    },
   },
 });
 
-export const { createAppointment, deleteAppointment } =
+export const { createAppointment, deleteAppointment, editAppointment } =
   appointmentSlice.actions;
 export default appointmentSlice.reducer;
