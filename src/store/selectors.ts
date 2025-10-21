@@ -1,18 +1,18 @@
 import dayjs from "dayjs";
 import type Appointment from "../types/appointment";
 
-const filterAppointmentsByDate = (appointments: Appointment[], date: Date) =>
+export const filterAppointmentsByDate = (
+  appointments: Appointment[],
+  date: Date
+) =>
   appointments.filter(({ appointmentDate }) =>
     dayjs(date).isSame(dayjs(appointmentDate), "day")
   );
 
-const filterAppointmentsByDoctorNames = (
+export const filterAppointmentsByDoctorNames = (
   names: string[],
   appointments: Appointment[]
-): Appointment[] =>
-  appointments.filter(({ doctor }) =>
-    names.some((name) => doctor.toLowerCase().includes(name.toLowerCase()))
-  );
+): Appointment[] => appointments.filter(({ doctor }) => names.includes(doctor));
 
-const getAppointmentsAmount = (appointments: Appointment[]): number =>
+export const getAppointmentsAmount = (appointments: Appointment[]): number =>
   appointments.length;
