@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { deleteAppointment } from "../store/appointments";
+import { deleteAppointment, editAppointment } from "../store/appointments";
 
 export default function AppointmentsList() {
   const appointments = useAppSelector((state) => state.appointments);
@@ -15,6 +15,9 @@ export default function AppointmentsList() {
           {dayjs(appointment.appointmentDate).format("DD/MM/YYYY")}
           <button onClick={() => dispatch(deleteAppointment(appointment.id))}>
             Remove
+          </button>
+          <button onClick={() => dispatch(editAppointment(appointment))}>
+            Edit
           </button>
         </li>
       ))}
