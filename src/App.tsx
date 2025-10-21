@@ -7,12 +7,14 @@ import Layout from "./components/Layout";
 import AppointmentsList from "./pages/AppointmentsList";
 import { Provider } from "react-redux";
 import store from "./store";
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <CssBaseline />
           <Routes>
             <Route element={<Layout />}>
               <Route
